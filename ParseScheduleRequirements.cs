@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-public class ParseScheduleDescription {
+public class ParseScheduleRequirements {
     public static int ParseNumberOfEmployees(string employeeNumberString)
     {
         var employeeNumber = 0;

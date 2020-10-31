@@ -24,19 +24,19 @@ public class ShiftSchedulingSat
 
     static IEnumerable<string> SolveShiftScheduling(string scheduleDescription, bool print = false)
     {
-        var mainParts = ParseScheduleDescription.splitScheduleDescriptionIntoMainParts(scheduleDescription);
+        var mainParts = ParseScheduleRequirements.splitScheduleDescriptionIntoMainParts(scheduleDescription);
         
-        int numEmployees = ParseScheduleDescription.ParseNumberOfEmployees((mainParts.numbers).numEmp);
-        int numWeeks = ParseScheduleDescription.ParseNumberOfEmployees((mainParts.numbers).numWeeks);
+        int numEmployees = ParseScheduleRequirements.ParseNumberOfEmployees((mainParts.numbers).numEmp);
+        int numWeeks = ParseScheduleRequirements.ParseNumberOfEmployees((mainParts.numbers).numWeeks);
         var shifts = new[] { "O", "M", "A", "N" };
 
         // Fixed assignment: (employee, shift, day).
         // This fixes the first 2 days of the schedule.
-        (int Employee, int Shift, int Day)[] fixedAssignments = ParseScheduleDescription.ParseFixedAssignments(mainParts.fixedAssignments);
+        (int Employee, int Shift, int Day)[] fixedAssignments = ParseScheduleRequirements.ParseFixedAssignments(mainParts.fixedAssignments);
 
         // Request: (employee, shift, day, weight)
         // A negative weight indicates that the employee desire this assignment.
-        (int Employee, int Shift, int Day, int Weight)[] requests = ParseScheduleDescription.ParseRequests(mainParts.requests);
+        (int Employee, int Shift, int Day, int Weight)[] requests = ParseScheduleRequirements.ParseRequests(mainParts.requests);
 
         // {
         //     // Employee 3 wants the first Saturday off.
@@ -85,7 +85,7 @@ public class ShiftSchedulingSat
 
         // daily demands for work shifts (morning, afternon, night) for each day
         // of the week starting on Monday.
-        int[][] weeklyCoverDemands = ParseScheduleDescription.ParseCoverDemands(mainParts.coverDemands);
+        int[][] weeklyCoverDemands = ParseScheduleRequirements.ParseCoverDemands(mainParts.coverDemands);
         
         // {
         //     new [] {2, 3, 1}, // Monday
