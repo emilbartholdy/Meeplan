@@ -23,16 +23,16 @@ python3 schedule-requirements-parser.py $scheduleRequirements
 ./PlannerCSharp.exe /schedule-requirements.txt
 
 # Once schedule-to-csv.py is ready
-# python3 schedule-to-csv.py schedule.txt schedule-requirements.csv
+python3 schedule-to-csv.py schedule-requirements.csv schedule.txt
 
 printf 'Dit vagtskema er færdigt! \n'
 printf 'Filen heder \"schedule.csv\". \n'
 
 # cat schedule.csv # Once schedule-to-csv.py
-cat schedule.txt
+cat schedule.csv
 
 printf 'Du kan uploade den til Google Sheets for at få mere grafisk overblik af planen. \n'
 printf 'Tak for denne gang! \n'
 
 # cleanup: delete intermediary files
-rm schedule-requirements.txt # schedule.txt 
+rm schedule-requirements.txt schedule.txt 

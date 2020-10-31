@@ -1,12 +1,13 @@
 import csv
 import datetime
 import pandas as pd
+import sys
 
 #get names
 
 navne= []
 #original requirements/wishes
-data = pd.read_csv("schedule-requirements.csv")
+data = pd.read_csv(sys.argv[1])
 
 for i in data['Unnamed: 0']:
     navne.append(i)
@@ -45,7 +46,7 @@ print("##################################")
 #import the assigned shifts
 shifts = []
 #open algorithm plan
-recieved_plan = open("schedule (1).txt","r")
+recieved_plan = open(sys.argv[2],"r")
 lines = recieved_plan.readlines()
 for worker, line in enumerate(lines):
     line = line.replace(' ', '')
