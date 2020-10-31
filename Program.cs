@@ -9,7 +9,7 @@ using Google.OrTools.Sat;
 public class ShiftSchedulingSat
 {
     // args: 
-    // [0] = scheduleDescription file name
+    // [0] = scheduleRequirements file name
     static void Main(string[] args)
     {
         var cd = Environment.CurrentDirectory;
@@ -19,7 +19,7 @@ public class ShiftSchedulingSat
         
         var result = SolveShiftScheduling(scheduleDescription);
 
-        System.IO.File.WriteAllLines(Environment.CurrentDirectory + "/schedule-result.txt", result);
+        System.IO.File.WriteAllLines(Environment.CurrentDirectory + "/schedule.txt", result);
     }
 
     static IEnumerable<string> SolveShiftScheduling(string scheduleDescription, bool print = false)
@@ -350,7 +350,14 @@ public class ShiftSchedulingSat
                     {
                         if (solver.BooleanValue(work[e, s, d]))
                         {
-                            schedule += shifts[s] + " ";
+                            switch (shifts[s])
+                            {
+                                case "O": schedule += "0" + " "; break;
+                                case "M": schedule += "1" + " "; break;
+                                case "A": schedule += "2" + " "; break;
+                                case "N": schedule += "3" + " "; break;
+                                default: return null;
+                            }                               
                         }
                     }
                 }

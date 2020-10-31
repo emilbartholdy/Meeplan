@@ -9,22 +9,30 @@ cat << "EOF"
                                        
 EOF
 
-echo 'Velkommen til MeePlan – Lad mig tage mig a planlægningen af vagtskemaet.'
-echo '1. Download vagtplan specifikationen fra Google Sheets.' 
-echo '2. Læg den i samme mappe som dette program.'
-echo '3. Skriv navnet på filen ind her:'
+printf 'Velkommen til MeePlan – Lad mig tage mig a planlægningen af vagtskemaet. \n'
+printf '1. Download vagtplan specifikationen fra Google Sheets. \n'
+printf '2. Læg den i samme mappe som dette program. \n'
+printf '3. Skriv navnet på filen ind her: \n'
 
 read scheduleRequirements
 
-echo 'Tak! Jeg planlægger resten. Det tager omkring 30 sekunder...'
+printf "Tak! Jeg planlægger resten. Det tager omkring 30 sekunder... \n \n \n"
 
-python3 schedule-requirements-parser.py # < $scheduleRequirements
+python3 schedule-requirements-parser.py $scheduleRequirements
 
-./PlannerCSharp /schedule-requirements.txt
+./PlannerCSharp.exe /schedule-requirements.txt
 
-echo 'Okay, her er din plan:'
+# Once schedule-to-csv.py is ready
+# python3 schedule-to-csv.py schedule.txt schedule-requirements.csv
 
-cat schedule-result.txt
+printf 'Dit vagtskema er færdigt! \n'
+printf 'Filen heder \"schedule.csv\". \n'
 
-echo 'Du kan uploade den til Google Sheets igen for at få mere grafisk overblik af planen.'
-echo 'Tak for denne gang!'
+# cat schedule.csv # Once schedule-to-csv.py
+cat schedule.txt
+
+printf 'Du kan uploade den til Google Sheets for at få mere grafisk overblik af planen. \n'
+printf 'Tak for denne gang! \n'
+
+# cleanup: delete intermediary files
+rm schedule-requirements.txt schedule.txt 

@@ -12,9 +12,10 @@ cover_demands = [
 [1, 2, 3],
 [1, 3, 1]]
 
-data = pd.read_csv("schedule-requirements.csv")
+schedule_requirements_csv_file_name = sys.argv[1]
 
-#sys.argv[1]
+data = pd.read_csv(schedule_requirements_csv_file_name)
+
 dataWishes = data.iloc[:,1:-1]
 
 for nurse in range(0, len(dataWishes)):
@@ -26,20 +27,20 @@ for nurse in range(0, len(dataWishes)):
                     #print("Test")               
                     #print(nurse, shift, day, wish)
                     if wish == 'x':
-                        print("want:")
-                        print(nurse, shift, day, '-1')
+                        # print("want:")
+                        # print(nurse, shift, day, '-1')
                         requests.append([nurse, shift, day, '-1'])
                     elif wish == 't':
-                        print("no please")
-                        print(nurse, shift, day, '+1')
+                        # print("no please")
+                        # print(nurse, shift, day, '+1')
                         requests.append([nurse, "0", day, '+1'])
                     elif wish == 'd':
-                        print("nonononO!")
-                        print(nurse, shift, day)
+                        # print("nonononO!")
+                        # print(nurse, shift, day)
                         fixed_shifts.append([nurse, "0", day])
                     elif wish == 'w':
-                        print("Yes!")
-                        print(nurse, shift, day)
+                        # print("Yes!")
+                        # print(nurse, shift, day)
                         fixed_shifts.append([nurse, shift, day])
                     else:
                         print("Input error!")
