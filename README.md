@@ -1,3 +1,9 @@
+# About
+
+Meeplan is a console application used to generate shifts. It takes as an input a list of shift requirements and employees and from that it generates a plan in a csv project.
+
+The csv can be imported into a google sheet for visualization:
+
 # Dependencies
 * Python 3.8
 * Pandas

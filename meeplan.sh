@@ -35,4 +35,4 @@ printf 'Du kan uploade den til Google Sheets for at få mere grafisk overblik af
 printf 'Tak for denne gang! \n'
 
 # cleanup: delete intermediary files
-rm schedule-requirements.txt schedule.txt 
+rm schedule-requirements.txt # schedule.txt 
