@@ -48,5 +48,3 @@ Found here:
 https://stackoverflow.com/questions/64245321/having-problems-running-numpy-error-about-buggy-accelerate-backend-python
 
 * Go to line 270 and comment out the lines 270 - 287 in the numpy package.
-
-

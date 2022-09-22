@@ -1,8 +1,8 @@
-8 # Number of employees
-3 # Number of weeks to be planned
+8 # Number of employees (Comes from rows of input csv)
+3 # Number of weeks to be planned (Comes from input columns)
 ---
 0 0 0 # Fixed Assignments
-1 0 0 # E S D
+1 0 0 # Employee Shift (0-3) Day
 2 1 0
 3 1 0
 4 2 0

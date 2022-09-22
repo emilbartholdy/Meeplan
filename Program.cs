@@ -12,6 +12,7 @@ public class ShiftSchedulingSat
     // [0] = scheduleRequirements file name
     static void Main(string[] args)
     {
+
         var cd = Environment.CurrentDirectory;
         var sceduleDescriptionPath = Environment.CurrentDirectory + args[0];
 
